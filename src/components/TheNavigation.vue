@@ -1,25 +1,70 @@
 <template>
   <nav id="nav">
-    <router-link to="/">Home</router-link>
-    <router-link to="/brazil">Brazil</router-link>
-    <router-link to="/panama">Panama</router-link>
-    <router-link to="/hawaii">Hawaii</router-link>
-    <router-link to="/jamaica">Jamaica</router-link>
+    <p class="logo">The Vue Route Travel App</p>
+    <nav class="nav-links">
+      <li class="links">
+        <router-link to="/"> Home </router-link>
+      </li>
+      <li
+        v-for="destination in destinations"
+        :key="destination.name"
+        class="links"
+      >
+        <router-link
+          :to="{
+            name: 'DestinationDetails',
+            params: { slug: destination.slug },
+          }"
+        >
+          {{ destination.name }}
+        </router-link>
+      </li>
+    </nav>
   </nav>
 </template>
 
+<script>
+import store from "@/store.js";
+
+export default {
+  data() {
+    return {
+      destinations: store.destinations,
+    };
+  },
+};
+</script>
+
 <style scoped>
 #nav {
-  padding: 30px;
+  display: flex;
 }
-
 #nav a {
-  font-weight: bold;
   color: #2c3e50;
-  padding: 0 10px;
+  text-decoration: none;
+  font-weight: bold;
 }
 
 #nav a.link-active {
   color: #42b983;
+}
+.nav-links {
+  padding: 25px;
+  list-style: none;
+  text-align: center;
+  vertical-align: middle;
+}
+.links {
+  padding-right: 70px;
+  list-style: none;
+  float: left;
+}
+.links:hover {
+  text-decoration: underline;
+}
+.logo {
+  font-size: 20px;
+  color: purple;
+  font-weight: bold;
 }
 </style>
