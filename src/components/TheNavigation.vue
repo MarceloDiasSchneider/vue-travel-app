@@ -38,26 +38,27 @@ export default {
 <style scoped>
 #nav {
   display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  border-bottom: 1px solid grey;
+  z-index: 1;
 }
 #nav a {
   color: #2c3e50;
   text-decoration: none;
   font-weight: bold;
 }
-
 #nav a.link-active {
   color: #42b983;
 }
 .nav-links {
-  padding: 25px;
-  list-style: none;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
 }
 .links {
-  padding-right: 70px;
+  padding: 20px;
   list-style: none;
-  float: left;
 }
 .links:hover {
   text-decoration: underline;
