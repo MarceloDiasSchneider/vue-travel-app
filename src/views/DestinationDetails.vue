@@ -13,7 +13,7 @@
     </section>
     <section class="experiences">
       <h2>Top experiences in {{ destination.name }}</h2>
-      <div class="cards">
+      <div id="experience" class="cards">
         <div
           v-for="experience in destination.experiences"
           :key="experience.slug"
