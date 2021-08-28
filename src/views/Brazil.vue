@@ -9,18 +9,18 @@
 </template>
 
 <script>
-// import Teste from "@/components/BrazilTeste";
+import Teste from "@/components/BrazilTeste";
 
 export default {
-  // components: {
-  //   Teste,
-  // },
   components: {
-    Teste: () =>
-      import(
-        /* webpackChunkName: "brazil-teste" */ "../components/BrazilTeste.vue"
-      ),
+    Teste,
   },
+  // components: {
+  //   Teste: () =>
+  //     import(
+  //       /* webpackChunkName: "brazil-teste" */ "../components/BrazilTeste.vue"
+  //     ),
+  // },
   data() {
     return {
       teste: false,
