@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>
+    <router-link id="logo" to="/">Vue Router Travel App</router-link>
     <router-link :to="{ name: 'brazil' }">Brazil</router-link>
     <router-link :to="{ name: 'hawaii' }">Hawaii</router-link>
     <router-link :to="{ name: 'panama' }">Panama</router-link>
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-#nav a.nav-link-active {
+#nav a.nav-link-active:not(#logo) {
   border-bottom: 2px solid rgba(255, 255, 255, 0.7);
 }
 </style>
