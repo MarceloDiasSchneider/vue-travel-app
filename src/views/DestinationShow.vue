@@ -1,4 +1,5 @@
 <template>
+  <DestinationsShortView />
   <section class="destination">
     <h1>{{ destination.name }}</h1>
     <div class="destination-details">
@@ -10,10 +11,15 @@
 
 <script>
 import sourceData from "@/data.json";
+import DestinationsShortView from "@/components/DestinationsShortView.vue";
+
 export default {
+  components: {
+    DestinationsShortView,
+  },
   data() {
     return {
-      //
+      destinations: sourceData.destinations,
     };
   },
   computed: {
