@@ -17,11 +17,6 @@ export default {
   components: {
     DestinationsShortView,
   },
-  data() {
-    return {
-      destinations: sourceData.destinations,
-    };
-  },
   computed: {
     destinationId() {
       return parseInt(this.$route.params.id);
