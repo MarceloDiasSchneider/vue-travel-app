@@ -32,12 +32,12 @@ export default {
   },
   async created() {
     this.fecthDestination();
-    this.$watch(
-      () => this.$route.params,
-      async () => {
-        this.fecthDestination();
-      }
-    );
+    // this.$watch(
+    //   () => this.$route.params,
+    //   async () => {
+    //     this.fecthDestination();
+    //   }
+    // );
   },
 };
 </script>
