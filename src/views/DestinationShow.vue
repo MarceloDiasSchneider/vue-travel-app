@@ -14,6 +14,16 @@
 import DestinationsShortView from "@/components/DestinationsShortView.vue";
 
 export default {
+  props: {
+    id: {
+      type: Number,
+      required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+    },
+  },
   components: {
     DestinationsShortView,
   },
@@ -25,7 +35,7 @@ export default {
   methods: {
     async fecthDestination() {
       const response = await fetch(
-        `https://travel-dummy-api.netlify.app/${this.$route.params.slug}`
+        `https://travel-dummy-api.netlify.app/${this.slug}`
       );
       this.destination = await response.json();
     },
