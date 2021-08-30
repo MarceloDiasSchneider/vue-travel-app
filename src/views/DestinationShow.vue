@@ -1,17 +1,38 @@
 <template>
-  <DestinationsShortView />
-  <section v-if="destination" class="destination">
-    <h1>{{ destination.name }}</h1>
-    <div class="destination-details">
-      <img :src="`/images/${destination.image}`" :alt="destination.name" />
-      <p>{{ destination.description }}</p>
-    </div>
-  </section>
+  <div>
+    <DestinationsShortView />
+    <section v-if="destination" class="destination">
+      <h1>{{ destination.name }}</h1>
+      <div class="destination-details">
+        <img :src="`/images/${destination.image}`" :alt="destination.name" />
+        <p>{{ destination.description }}</p>
+      </div>
+    </section>
+    <section v-if="destination" class="experiences">
+      <h2>Top Experiences {{ destination.name }}</h2>
+      <div class="cards">
+        <router-link
+          v-for="experience in destination.experiences"
+          :key="experience.slug"
+          :to="{
+            name: 'experience.show',
+            params: {
+              experienceSlug: experience.slug,
+            },
+          }"
+        >
+          <ExperienceCard :experience="experience" />
+        </router-link>
+      </div>
+      <router-view />
+    </section>
+  </div>
 </template>
 
 <script>
 // import sourceData from "@/data.json";
 import DestinationsShortView from "@/components/DestinationsShortView.vue";
+import ExperienceCard from "@/components/ExperienceCard.vue";
 
 export default {
   props: {
@@ -26,6 +47,7 @@ export default {
   },
   components: {
     DestinationsShortView,
+    ExperienceCard,
   },
   data() {
     return {
