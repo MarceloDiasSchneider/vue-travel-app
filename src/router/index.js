@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import souceData from "@/data.json";
 
 const routes = [
   {
@@ -16,6 +17,20 @@ const routes = [
       ...route.params,
       id: parseInt(route.params.id),
     }),
+    beforeEnter(to) {
+      const exists = souceData.destinations.find(
+        (destination) => destination.id === parseInt(to.params.id)
+      );
+      if (!exists)
+        return {
+          name: "not.found",
+          params: {
+            pathMatch: to.path.split("/").slice(1),
+            query: to.query,
+            hash: to.hash,
+          },
+        };
+    },
     children: [
       {
         path: ":experienceSlug",
@@ -55,6 +70,12 @@ const routes = [
     name: "jamaica",
     component: () =>
       import(/* webpackChunkName: "jamaica" */ "../views/Jamaica.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not.found",
+    component: () =>
+      import(/* webpackChunkName: "not-found" */ "../views/NotFound.vue"),
   },
 ];
 
