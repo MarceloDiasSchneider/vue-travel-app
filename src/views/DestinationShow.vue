@@ -1,6 +1,7 @@
 <template>
   <div>
-    <DestinationsShortView />
+    <GoBack />
+    <!-- <DestinationsShortView /> -->
     <section v-if="destination" class="destination">
       <h1>{{ destination.name }}</h1>
       <div class="destination-details">
@@ -30,8 +31,9 @@
 </template>
 
 <script>
+import GoBack from "@/components/GoBack.vue";
 // import sourceData from "@/data.json";
-import DestinationsShortView from "@/components/DestinationsShortView.vue";
+// import DestinationsShortView from "@/components/DestinationsShortView.vue";
 import ExperienceCard from "@/components/ExperienceCard.vue";
 
 export default {
@@ -46,7 +48,8 @@ export default {
     },
   },
   components: {
-    DestinationsShortView,
+    GoBack,
+    // DestinationsShortView,
     ExperienceCard,
   },
   data() {
