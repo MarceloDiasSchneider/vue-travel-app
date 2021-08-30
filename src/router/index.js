@@ -83,6 +83,15 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
   linkActiveClass: "nav-link-active",
+  scrollBehavior(to, from, savedPosition) {
+    // return { top: null, left: null, behavior: null, }
+    return (
+      savedPosition ||
+      new Promise((resolve) => {
+        setTimeout(() => resolve({ top: 0, behavior: "smooth" }), 100);
+      })
+    );
+  },
 });
 
 export default router;
