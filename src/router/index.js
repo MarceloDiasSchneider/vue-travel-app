@@ -123,7 +123,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   if (to.meta.requiresAuth && !window.user) {
-    return { name: "login", query: { redirect: to.fullPath } };
+    return { name: "login", params: { redirect: to.fullPath } };
   }
   if (to.path === "/login" && window.user) {
     return { name: "protected" };

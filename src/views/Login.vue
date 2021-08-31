@@ -21,7 +21,7 @@ export default {
   methods: {
     login() {
       window.user = this.username;
-      const redirectPath = this.$route.query.redirect || { name: "protected" };
+      const redirectPath = this.$route.params.redirect || { name: "protected" };
       this.$router.push(redirectPath);
     },
   },
