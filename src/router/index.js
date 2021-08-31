@@ -49,6 +49,21 @@ const routes = [
       },
     ],
   },
+  {
+    path: "/login",
+    name: "login",
+    component: () =>
+      import(/* webpackChunkName: "login" */ "../views/Login.vue"),
+  },
+  {
+    path: "/protected",
+    name: "protected",
+    component: () =>
+      import(/* webpackChunkName: "protected" */ "../views/Protected.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     path: "/brazil",
@@ -95,6 +110,15 @@ const router = createRouter({
       })
     );
   },
+});
+
+router.beforeEach((to) => {
+  if (to.meta.requiresAuth && !window.user) {
+    return { name: "login" };
+  }
+  if (to.path === "/login" && window.user) {
+    return { name: "protected" };
+  }
 });
 
 export default router;

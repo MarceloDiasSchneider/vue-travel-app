@@ -15,6 +15,8 @@
     >
       {{ destination.name }}
     </router-link>
+    <router-link :to="{ name: 'protected' }">Protected</router-link>
+    <router-link :to="{ name: 'login' }">Login</router-link>
   </div>
 </template>
 
