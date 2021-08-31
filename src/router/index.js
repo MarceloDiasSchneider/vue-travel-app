@@ -64,6 +64,15 @@ const routes = [
       requiresAuth: true,
     },
   },
+  {
+    path: "/invoices",
+    name: "invoices",
+    component: () =>
+      import(/* webpackChunkName: "invoices" */ "../views/Invoices.vue"),
+    meta: {
+      requiresAuth: true,
+    },
+  },
 
   {
     path: "/brazil",
@@ -114,7 +123,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   if (to.meta.requiresAuth && !window.user) {
-    return { name: "login" };
+    return { name: "login", query: { redirect: to.fullPath } };
   }
   if (to.path === "/login" && window.user) {
     return { name: "protected" };
