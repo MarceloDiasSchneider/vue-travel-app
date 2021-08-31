@@ -11,7 +11,10 @@ const routes = [
   {
     path: "/destination/:id/:slug",
     name: "destination.show",
-    component: () => import("@/views/DestinationShow.vue"),
+    component: () =>
+      import(
+        /* webpackChunkName: "destinations" */ "@/views/DestinationShow.vue"
+      ),
     // props: true,
     props: (route) => ({
       ...route.params,
@@ -37,7 +40,7 @@ const routes = [
         name: "experience.show",
         component: () =>
           import(
-            /* webpackChunkName: "Experiences" */ "../views/ExperiencesShow.vue"
+            /* webpackChunkName: "experiences" */ "../views/ExperiencesShow.vue"
           ),
         props: (route) => ({
           ...route.params,
