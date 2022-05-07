@@ -1,5 +1,5 @@
 <template>
-  <div if>
+  <div>
     <p>Ola Brazil!!</p>
   </div>
 </template>
